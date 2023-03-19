@@ -1,0 +1,89 @@
+from pathlib import Path
+
+import streamlit as st
+from PIL import Image
+
+# --- PATH SETTINGS ---
+current_dir = Path(__file__).parent if "__file__" in locals() else Path.cwd()
+css_file = current_dir / "styles" / "main.css"
+resume_file = current_dir / "assets" / "CV.pdf"
+profile_pic = current_dir / "assets" / "profile-pic2.png"
+
+
+# --- GENERAL SETTINGS ---
+PAGE_TITLE = "Digital CV | Gurdon Zoltán"
+PAGE_ICON = Image.open(current_dir / "assets" / "favicon.ico")
+NAME = "Gurdon Zoltán"
+DESCRIPTION = """
+Software tester
+"""
+
+EMAIL = "zoltan.gurdon@gmail.com"
+SOCIAL_MEDIA = {
+    "LinkedIn": "https://www.linkedin.com/in/zolt%C3%A1n-gurdon-a504a9103/"
+}
+
+st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
+st.title("Hello there!")
+
+# --- LOAD ASSETS ---
+with open(css_file) as f:
+    st.markdown("<style>{}</style>".format(f.read()), unsafe_allow_html=True)
+with open(resume_file, "rb") as pdf_file:
+    PDFbyte = pdf_file.read()
+profile_pic = Image.open(profile_pic)
+
+# --- HERO SECTION ---
+col1, col2 = st.columns(2, gap="small")
+with col1:
+    st.image(profile_pic, width=150)
+
+with col2:
+    st.title(NAME)
+    st.write(DESCRIPTION)
+    st.download_button(
+        label="📄 Önéletrajz letöltése",
+        data=PDFbyte,
+        file_name=resume_file.name,
+        mime="application/octet-stream",
+    )
+
+    st.write("✉", EMAIL)
+
+# --- SOCIAL LINKS ---
+st.write("#")
+cols = st.columns(len(SOCIAL_MEDIA))
+for index, (platform, link) in enumerate(SOCIAL_MEDIA.items()):
+    cols[index].write(f"[{platform}]({link})")
+
+
+# --- EXPERIENCE & QUALIFICATIONS ---
+st.write("#")
+st.subheader("Tapasztalatok")
+st.write(
+    """
+- Több mint 5 és fél év tesztelői tapasztalat
+- Kódolói tapasztalat
+- SQL ismeretek
+- etc..
+ """
+)
+
+# --- SKILLS ----
+st.write("#")
+st.subheader("Főbb ismeretek")
+st.write(
+    """
+- Manuális tesztelés
+- Programozási ismeretek (C, VBA, Python, C#)
+- Oracle SQL adatbázisok
+"""
+)
+
+# --- WORK HISTORY ---
+st.write("#")
+st.subheader("Munkatapasztalatok")
+st.write("---")
+
+# --- JOB 1
+st.write("🚧","Szoftvertesztelő | Szintézis-Net KFT.")
