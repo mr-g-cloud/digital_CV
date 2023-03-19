@@ -16,8 +16,8 @@ PAGE_TITLE = "Digital CV | Gurdon Zoltán"
 PAGE_ICON = Image.open(current_dir / "assets" / "favicon.ico")
 DESCRIPTION = """Szoftvertesztelő/Tesztelés vezető"""
 SUMMARY = """
-Határidő orientált tesztelő vagyok közel 6 éves tapasztalattal, többnyire manuális tesztelés területén, 
-viszont minimálisan foglalkoztam automatizálással is.\nKülönösen szeretem a technikai jellegű feladatokat.\n
+Határidő-orientált tesztelő vagyok közel 6 éves tapasztalattal, többnyire manuális tesztelés területén, 
+de foglalkoztam automatizálással is.\nKülönösen szeretem a technikai jellegű feladatokat.\n
 Agilis és nem agilis projekten is részt vettem.\n
 Könnyen teremtek kapcsolatot az emberekkel, jól kijövök a fejlesztő és manager kollégákkal is. Higgadt és türelmes 
 embernek tartom magam, szeretem az "egyenes beszédet".\n
@@ -31,6 +31,7 @@ SOCIAL_MEDIA = {
 }
 
 st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
+st.write("#")
 st.title("Digitális önéletrajz")
 
 # --- LOAD ASSETS ---
@@ -180,6 +181,7 @@ with st.expander("Szakmai tapasztalatok", True):
                 - VBA makrók tervezése és írása a beszerzési osztály zárolt raktárban történő alkatrész mozgások
                 nyomonkövetésére.
             """)
+    st.write("#")
 
 # --- Certificates ---
 st.write("#")
@@ -202,7 +204,7 @@ with st.expander("Tanulmányok", True):
     # --- School 1
     st.write("2009 - 2016: Széchényi István Egyetem Mérnök Informatika szak, BSC")
     # --- School 2
-    st.write("2006 - 2000: Reguly Antal Szakképző Iskola Zirc Felnőtt képzés (nappali) – Érettségi bizonyítvány")
+    st.write("2006 - 2009: Reguly Antal Szakképző Iskola Zirc Felnőtt képzés (nappali) – Érettségi bizonyítvány")
     st.write("2002 - 2006: Reguly Antal Szakképző Iskola Zirc Élelmiszer- és vegyiáru kereskedő – "
              "Szakmunkás-bizonyítvány")
 
